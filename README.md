@@ -1,5 +1,5 @@
 # ipreader
-Simple web service returning public ip
+Simple web service returning public ip and user-agent
 
 ## Starting the server
 java -jar ipreader-0.0.1-SNAPSHOT.jar
