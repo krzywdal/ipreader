@@ -37,5 +37,6 @@ class IpReaderControllerTest {
     void getIpInfo() {
         String result = this.restTemplate.getForObject(host + "/ipinfo", String.class);
         assertThat(result).contains("remoteAddr");
+        assertThat(result).contains("userAgent");
     }
 }

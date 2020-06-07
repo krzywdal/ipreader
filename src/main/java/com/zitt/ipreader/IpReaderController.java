@@ -1,5 +1,6 @@
 package com.zitt.ipreader;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,10 +28,10 @@ public class IpReaderController {
             String ip = request.getHeader(header);
             if (ip != null && ip.length() != 0
                     && !"unknown".equalsIgnoreCase(ip)) {
-                return new IpInfo(ip);
+                return new IpInfo(ip, request.getHeader(HttpHeaders.USER_AGENT));
             }
         }
-        return new IpInfo(request.getRemoteAddr());
+        return new IpInfo(request.getRemoteAddr(), request.getHeader(HttpHeaders.USER_AGENT));
     }
 
 }

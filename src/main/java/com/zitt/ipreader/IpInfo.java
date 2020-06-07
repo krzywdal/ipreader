@@ -6,9 +6,15 @@ package com.zitt.ipreader;
 public class IpInfo {
 
     private String remoteAddr;
+    private String userAgent;
 
-    public IpInfo(String remoteAddr) {
+    /**
+     * @param remoteAddr
+     * @param userAgent
+     */
+    public IpInfo(String remoteAddr, String userAgent) {
         this.remoteAddr = remoteAddr;
+        this.userAgent = userAgent;
     }
 
     public String getRemoteAddr() {
@@ -19,4 +25,19 @@ public class IpInfo {
         this.remoteAddr = remoteAddr;
     }
 
+    public String getUserAgent() {
+        return userAgent;
+    }
+
+    public void setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
+    }
+
+    @Override
+    public String toString() {
+        return "IpInfo{" +
+                "remoteAddr='" + remoteAddr + '\'' +
+                ", userAgent='" + userAgent + '\'' +
+                '}';
+    }
 }
