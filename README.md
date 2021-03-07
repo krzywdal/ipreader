@@ -1,5 +1,5 @@
 # ipreader
-Simple web service returning public ip and user-agent
+Simple web service returning public **ip** and **user-agent**
 
 ## Building the jar
  ./gradlew bootJar
@@ -12,7 +12,6 @@ or with port specified
 java -Dserver.port=8080 -jar ipreader-0.0.1-SNAPSHOT.jar
 
 ## Usage
-Server exposes /ipinfo endpoint
+Server exposes **/ipinfo** endpoint
 
-For port 8080 it will be http://127.0.0.1:8080/ipinfo
-
+For localhost on port 8080 it will be: **http://127.0.0.1:8080/ipinfo**
