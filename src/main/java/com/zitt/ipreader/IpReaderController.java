@@ -5,9 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.logging.Logger;
 
 @RestController
 public class IpReaderController {
+
+    private static Logger LOG = Logger.getLogger("IpReaderController.class");
 
     private static final String[] IP_HEADER_CANDIDATES = {
             "X-Forwarded-For",
@@ -24,14 +27,24 @@ public class IpReaderController {
 
     @GetMapping("/ipinfo")
     public IpInfo getIpInfo(HttpServletRequest request) {
+        IpInfo response = null;
+
         for (String header : IP_HEADER_CANDIDATES) {
             String ip = request.getHeader(header);
             if (ip != null && ip.length() != 0
                     && !"unknown".equalsIgnoreCase(ip)) {
-                return new IpInfo(ip, request.getHeader(HttpHeaders.USER_AGENT));
+                response = new IpInfo(ip, request.getHeader(HttpHeaders.USER_AGENT));
+                break;
             }
         }
-        return new IpInfo(request.getRemoteAddr(), request.getHeader(HttpHeaders.USER_AGENT));
+        if (response == null) {
+            response = new IpInfo(request.getRemoteAddr(), request.getHeader(HttpHeaders.USER_AGENT));
+        }
+
+        LOG.info("Handle request returning: " + response);
+
+        return response;
     }
+
 
 }
