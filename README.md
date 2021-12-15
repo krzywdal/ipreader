@@ -15,3 +15,4 @@ java -Dserver.port=8080 -jar ipreader-0.0.1-SNAPSHOT.jar
 Server exposes **/ipinfo** endpoint
 
 For localhost on port 8080 it will be: **http://127.0.0.1:8080/ipinfo**
+
