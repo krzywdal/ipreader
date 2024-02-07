@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 @RestController
 public class IpReaderController {
 
-    private static Logger LOG = Logger.getLogger("IpReaderController.class");
+    private static final Logger LOG = Logger.getLogger("IpReaderController.class");
 
     private static final String[] IP_HEADER_CANDIDATES = {
             "X-Forwarded-For",
@@ -32,7 +32,7 @@ public class IpReaderController {
 
         for (String header : IP_HEADER_CANDIDATES) {
             String ip = request.getHeader(header);
-            if (ip != null && ip.length() != 0
+            if (ip != null && !ip.isEmpty()
                     && !"unknown".equalsIgnoreCase(ip)) {
                 response = new IpInfo(ip, request.getHeader(HttpHeaders.USER_AGENT));
                 break;
