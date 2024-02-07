@@ -1,4 +1,4 @@
-package com.zitt.ipreader;
+package com.zitt.ipreader.domain;
 
 /**
  *

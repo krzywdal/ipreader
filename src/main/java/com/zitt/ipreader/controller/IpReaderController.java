@@ -1,5 +1,6 @@
-package com.zitt.ipreader;
+package com.zitt.ipreader.controller;
 
+import com.zitt.ipreader.domain.IpInfo;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
